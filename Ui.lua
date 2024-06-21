@@ -78,6 +78,13 @@ function NoHyper.set_theme(name:string) -- [[ YOU CAN CUSTOM THEME ]]
 		NoHyper.Theme.STROKE = Color3.fromRGB(68, 72, 89)
 		NoHyper.Theme.TOUCH = Color3.fromRGB(36, 36, 51)
 		NoHyper.Theme.SYSTEM = Color3.fromRGB(189, 194, 218)
+	elseif name:lower() == 'xsync' then
+		NoHyper.Theme.BACKGROUND = Color3.fromRGB(34, 37, 42)
+		NoHyper.Theme.SECTION = Color3.fromRGB(39, 42, 48)
+		NoHyper.Theme.MAIN = Color3.fromRGB(0, 0, 138)
+		NoHyper.Theme.STROKE = Color3.fromRGB(27, 30, 34)
+		NoHyper.Theme.TOUCH = Color3.fromRGB(0, 0, 139)
+		NoHyper.Theme.SYSTEM = Color3.fromRGB(65, 105, 225)
 	end
 end
 
