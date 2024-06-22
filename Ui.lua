@@ -79,12 +79,12 @@ function NoHyper.set_theme(name:string) -- [[ YOU CAN CUSTOM THEME ]]
 		NoHyper.Theme.TOUCH = Color3.fromRGB(36, 36, 51)
 		NoHyper.Theme.SYSTEM = Color3.fromRGB(189, 194, 218)
 	elseif name:lower() == 'xsync' then
-		NoHyper.Theme.BACKGROUND = Color3.fromRGB(34, 37, 42)
-		NoHyper.Theme.SECTION = Color3.fromRGB(39, 42, 48)
+		NoHyper.Theme.BACKGROUND = Color3.fromRGB(30, 30, 30)
+		NoHyper.Theme.SECTION = Color3.fromRGB(30, 30, 30)
 		NoHyper.Theme.MAIN = Color3.fromRGB(0, 0, 138)
 		NoHyper.Theme.STROKE = Color3.fromRGB(27, 30, 34)
 		NoHyper.Theme.TOUCH = Color3.fromRGB(0, 0, 139)
-		NoHyper.Theme.SYSTEM = Color3.fromRGB(65, 105, 225)
+		NoHyper.Theme.SYSTEM = Color3.fromRGB(0, 0, 138)
 	end
 end
 
@@ -243,7 +243,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 	local HyperWindow = {
 		Tabs = {},
 		Size = UDim2.new(0.230000004, 350, 0.25, 250),
-		Toggle = Enum.KeyCode.LeftControl
+		Toggle = Enum.KeyCode.End
 	}
 
 	WindowName = ToDefault(WindowName,'Hello, NoHyper')
@@ -999,12 +999,10 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 				})
 			end
 
-			function Section_Hyper:AddToggle(ToggleName:string,Default:boolean,callback:FunctionalTest)
+			function Section_Hyper:AddToggle(ToggleName:string, Default:boolean, callback:FunctionalTest)
 				Default = Default or false
-				callback = ToDefault(callback,function()
-
-				end)
-
+				callback = ToDefault(callback,function() end)
+			
 				local Toggle = Instance.new("Frame")
 				local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
 				local Text = Instance.new("TextLabel")
@@ -1012,9 +1010,8 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 				local UICorner = Instance.new("UICorner")
 				local True = Instance.new("ImageLabel")
 				local Button = Instance.new("TextButton")
-
-				--Properties:
-
+			
+				-- Properties:
 				Toggle.Name = "Toggle"
 				Toggle.Parent = Section
 				Toggle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1022,13 +1019,13 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 				Toggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Toggle.BorderSizePixel = 0
 				Toggle.ClipsDescendants = true
-				Toggle.Size = UDim2.new(1, 0, 1, 0)
+				Toggle.Size = UDim2.new(1, 0, 2, 0)  -- Increased height
 				Toggle.ZIndex = 7
-
+			
 				UIAspectRatioConstraint.Parent = Toggle
-				UIAspectRatioConstraint.AspectRatio = 9.000
+				UIAspectRatioConstraint.AspectRatio = 4.500  -- Adjusted aspect ratio for new size
 				UIAspectRatioConstraint.AspectType = Enum.AspectType.ScaleWithParentSize
-
+			
 				Text.Name = "Text"
 				Text.Parent = Toggle
 				Text.AnchorPoint = Vector2.new(0, 0.5)
@@ -1037,18 +1034,18 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 				Text.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Text.BorderSizePixel = 0
 				Text.Position = UDim2.new(0.0516665913, 0, 0.499999881, 0)
-				Text.Size = UDim2.new(0.998333275, 0, 0.444999993, 0)
+				Text.Size = UDim2.new(0.998333275, 0, 0.9, 0)  -- Adjusted size to fit new height
 				Text.ZIndex = 7
 				Text.Font = Enum.Font.GothamMedium
 				Text.Text = ToggleName or "TOGGLE"
 				Text.TextColor3 = Color3.fromRGB(255, 255, 255)
 				Text.TextScaled = true
-				Text.TextSize = 14.000
+				Text.TextSize = 18.000  -- Increased text size
 				Text.TextStrokeTransparency = 0.800
 				Text.TextTransparency = 0.100
 				Text.TextWrapped = true
 				Text.TextXAlignment = Enum.TextXAlignment.Left
-
+			
 				Ui.Name = "Ui"
 				Ui.Parent = Toggle
 				Ui.AnchorPoint = Vector2.new(1, 0.5)
@@ -1056,13 +1053,13 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 				Ui.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Ui.BorderSizePixel = 0
 				Ui.Position = UDim2.new(0.950000107, 0, 0.500000417, 0)
-				Ui.Size = UDim2.new(0.649999976, 0, 0.649999976, 0)
+				Ui.Size = UDim2.new(1.29999995, 0, 1.29999995, 0)  -- Increased size
 				Ui.SizeConstraint = Enum.SizeConstraint.RelativeYY
 				Ui.ZIndex = 7
-
+			
 				UICorner.CornerRadius = UDim.new(0, 4)
 				UICorner.Parent = Ui
-
+			
 				True.Name = "True"
 				True.Parent = Ui
 				True.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -1075,7 +1072,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 				True.Visible = false
 				True.ZIndex = 8
 				True.Image = "rbxassetid://3944680095"
-
+			
 				Button.Name = "Button"
 				Button.Parent = Toggle
 				Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1089,43 +1086,37 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 				Button.TextColor3 = Color3.fromRGB(0, 0, 0)
 				Button.TextSize = 14.000
 				Button.TextTransparency = 1.000
-
+			
 				Button.MouseEnter:Connect(function()
-					if Default then
-						return
-					end
-
-					Tween:Create(Ui,TweenInfo.new(0.075),{BackgroundColor3 = NoHyper.Theme.TOUCH}):Play()
+					if Default then return end
+					Tween:Create(Ui, TweenInfo.new(0.075), {BackgroundColor3 = NoHyper.Theme.TOUCH}):Play()
 				end)
-
+			
 				Button.MouseLeave:Connect(function()
-					if Default then
-						return
-					end
-
-					Tween:Create(Ui,TweenInfo.new(0.075),{BackgroundColor3 = NoHyper.Theme.BACKGROUND}):Play()
+					if Default then return end
+					Tween:Create(Ui, TweenInfo.new(0.075), {BackgroundColor3 = NoHyper.Theme.BACKGROUND}):Play()
 				end)
-
+			
 				local function Effect(vcal)
 					if vcal then
-						Tween:Create(Ui,TweenInfo.new(0.075),{BackgroundColor3 = NoHyper.Theme.SYSTEM}):Play()
+						Tween:Create(Ui, TweenInfo.new(0.075), {BackgroundColor3 = NoHyper.Theme.SYSTEM}):Play()
 						True.Visible = true
 					else
 						True.Visible = false
-						Tween:Create(Ui,TweenInfo.new(0.075),{BackgroundColor3 = NoHyper.Theme.BACKGROUND}):Play()
+						Tween:Create(Ui, TweenInfo.new(0.075), {BackgroundColor3 = NoHyper.Theme.BACKGROUND}):Play()
 					end
 				end
-
+			
 				Effect(Default)
-
+			
 				Button.MouseButton1Click:Connect(function()
 					Default = not Default
 					Effect(Default)
 					callback(Default)
 				end)
-
+			
 				Section_Hyper.update()
-
+			
 				return Signal({
 					{
 						name = 'Text',
@@ -1146,7 +1137,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 						end,
 					}
 				})
-			end
+			end			
 
 			function Section_Hyper:AddKeybind(KeybindName:string,Default:Enum.KeyCode,callback)
 				callback = ToDefault(callback,function() end)
