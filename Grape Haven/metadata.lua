@@ -1,6 +1,6 @@
 local metadata = {
   hub = {
-    name = "Crazzy Hub V3",
+    name = "Grape Haven",
     game = "Blox Fruit",
     version = "DOWN",
   },
